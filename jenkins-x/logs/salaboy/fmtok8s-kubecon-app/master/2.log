@@ -1,0 +1,34 @@
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-8wpnf-2[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-6mn9q[0m
+{"level":"warn","ts":1583226627.8824189,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1583226627.8831697,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-8wpnf-2[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-qdhtd[0m
+{"level":"warn","ts":1583226628.8753233,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1583226628.8774958,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-8wpnf-2[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-8wpnf-2[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-salaboy-fmtok8s-kubecon-app-mas-8wpnf-wptzs[0m
+{"level":"warn","ts":1583226634.9359317,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1583226635.9835582,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/*******/fmtok8s-kubecon-app.git @ v0.0.2 in path /workspace/source"}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-8wpnf-2[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:14ddeb69463127ee63bacbf1fcf27936345dd5bf
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-8wpnf-2[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /builder/home/git/credentials
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-8wpnf-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-username[0m
+Command "credential" is deprecated, it will be removed on Jun 1 2020.  This is replaced by Tekton's mounted secrets
+/builder/home/basic-auth-user.json
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-8wpnf-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-password[0m
+Command "credential" is deprecated, it will be removed on Jun 1 2020.  This is replaced by Tekton's mounted secrets
+/builder/home/basic-auth-pass.json
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-8wpnf-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-release[0m
+make: *** No rule to make target `release'.  Stop.
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-build-release'. The execution of the pipeline has stopped.[0m
