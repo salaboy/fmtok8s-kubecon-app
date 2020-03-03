@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: salaboy
+  repo: fmtok8s-api-gateway
+  url: https://github.com/salaboy/fmtok8s-api-gateway
+  version: 0.0.34
+  versionURL: https://github.com/salaboy/fmtok8s-api-gateway/releases/tag/v0.0.34
