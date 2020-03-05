@@ -1,0 +1,86 @@
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-pr-8qq8g-3[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-sv2qv[0m
+{"level":"warn","ts":1583426765.82053,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1583426765.8214428,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-pr-8qq8g-3[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-9frcb[0m
+{"level":"warn","ts":1583426766.250332,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1583426766.2535348,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-pr-8qq8g-3[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-pr-8qq8g-3[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-salaboy-fmtok8s-kubecon-app-pr-8qq8g-zxwsj[0m
+{"level":"warn","ts":1583426770.3572598,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1583426771.5969691,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/*******/fmtok8s-kubecon-app.git @ master in path /workspace/source"}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-pr-8qq8g-3[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:17ad50b5cde89c1e7021cc0ee48063a519a63d89,10:56133a9f0b7be283119559864c0cd4c2a24024d7
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch origin --unshallow 56133a9f0b7be283119559864c0cd4c2a24024d7: 17ad50b5cde89c1e7021cc0ee48063a519a63d89:
+DEBUG: ran git fetch --unshallow origin 56133a9f0b7be283119559864c0cd4c2a24024d7: 17ad50b5cde89c1e7021cc0ee48063a519a63d89: in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git branch
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git checkout master
+DEBUG: ran git checkout master in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git reset --hard 17ad50b5cde89c1e7021cc0ee48063a519a63d89
+DEBUG: ran git reset --hard 17ad50b5cde89c1e7021cc0ee48063a519a63d89 in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git clean -fd .
+DEBUG: ran clean --force -d . in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git merge 56133a9f0b7be283119559864c0cd4c2a24024d7
+DEBUG: ran git merge 56133a9f0b7be283119559864c0cd4c2a24024d7 in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git log --format=%H%x1f%an%x1f%ae%x1f%cn%x1f%ce%x1f%s%n%b%x1e 17ad50b5cde89c1e7021cc0ee48063a519a63d89..HEAD
+Merged SHA 64a1546993f9179273867409573c1c4ae3928dd7 with commit message 'Merge commit '56133a9f0b7be283119559864c0cd4c2a24024d7'' into base branch master
+Merged SHA 56133a9f0b7be283119559864c0cd4c2a24024d7 with commit message 'adding' into base branch master
+Merged SHA ed1d4ba5d93d3321055a78cf09d5ff2f2129939b with commit message 'adding separator' into base branch master
+Merged SHA 08e5f96dfac3860b10b863d02e6ecc2e35d45327 with commit message 'formatting' into base branch master
+Merged SHA fe2200639f7e64ec420a0c61796e6e0c1e3d4912 with commit message 'updating makefile' into base branch master
+Merged SHA 3a9c673f0a5238d215f5c47fbf550ffd8076c45d with commit message 'adding repo update' into base branch master
+Merged SHA 3b83cc00ce4de15bcc6a1481c6fd2d39d631e4d6 with commit message 'updating make' into base branch master
+Merged SHA 176572f928fb0136e9a4d2cc0134c71888959e82 with commit message 'adding v2 deps' into base branch master
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-pr-8qq8g-3[0m stage [32mfrom-build-pack[0m and container [32mstep-build-build[0m
+cat: /builder/home/basic-auth-user.json: No such file or directory
+cat: /builder/home/basic-auth-pass.json: No such file or directory
+rm -rf kubecon-app/charts
+rm -rf kubecon-app/kubecon-app*.tgz
+rm -rf kubecon-app/requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+helm repo add jenkins-x http://chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+helm repo add zeebe http://helm.zeebe.io
+"zeebe" has been added to your repositories
+helm repo add releases http://jenkins-x-chartmuseum:8080
+"releases" has been added to your repositories
+helm dependency build kubecon-app
+Hang tight while we grab the latest from your chart repositories...
+...Unable to get an update from the "local" chart repository (http://127.0.0.1:8879/charts):
+	Get http://127.0.0.1:8879/charts/index.yaml: dial tcp 127.0.0.1:8879: connect: connection refused
+...Successfully got an update from the "releases" chart repository
+...Successfully got an update from the "zeebe" chart repository
+...Successfully got an update from the "jenkins-x" chart repository
+...Successfully got an update from the "stable" chart repository
+Update Complete.
+Saving 7 charts
+Downloading fmtok8s-agenda from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-c4p from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-api-gateway from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-email from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-tests from repo http://jenkins-x-chartmuseum:8080
+Downloading zeebe-cluster from repo http://helm.zeebe.io
+Downloading zeebe-operate from repo http://helm.zeebe.io
+Deleting outdated charts
+helm lint kubecon-app
+==> Linting kubecon-app
+Lint OK
+
+1 chart(s) linted, no failures
