@@ -1,0 +1,58 @@
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-pr-mfb7q-2[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-lbl94[0m
+{"level":"warn","ts":1583423689.3685067,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1583423689.3692036,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-pr-mfb7q-2[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-fvj2p[0m
+{"level":"warn","ts":1583423689.778067,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1583423689.781117,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-pr-mfb7q-2[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-pr-mfb7q-2[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-salaboy-fmtok8s-kubecon-app-pr-mfb7q-ld227[0m
+{"level":"warn","ts":1583423692.792706,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1583423693.9641294,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/*******/fmtok8s-kubecon-app.git @ master in path /workspace/source"}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-pr-mfb7q-2[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:5a74f5e685e97eb47b65f122f5519113404f0387,10:3b83cc00ce4de15bcc6a1481c6fd2d39d631e4d6
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch origin --unshallow 3b83cc00ce4de15bcc6a1481c6fd2d39d631e4d6: 5a74f5e685e97eb47b65f122f5519113404f0387:
+DEBUG: ran git fetch --unshallow origin 3b83cc00ce4de15bcc6a1481c6fd2d39d631e4d6: 5a74f5e685e97eb47b65f122f5519113404f0387: in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git branch
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git checkout master
+DEBUG: ran git checkout master in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git reset --hard 5a74f5e685e97eb47b65f122f5519113404f0387
+DEBUG: ran git reset --hard 5a74f5e685e97eb47b65f122f5519113404f0387 in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git clean -fd .
+DEBUG: ran clean --force -d . in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git merge 3b83cc00ce4de15bcc6a1481c6fd2d39d631e4d6
+DEBUG: ran git merge 3b83cc00ce4de15bcc6a1481c6fd2d39d631e4d6 in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git log --format=%H%x1f%an%x1f%ae%x1f%cn%x1f%ce%x1f%s%n%b%x1e 5a74f5e685e97eb47b65f122f5519113404f0387..HEAD
+Merged SHA 3b83cc00ce4de15bcc6a1481c6fd2d39d631e4d6 with commit message 'updating make' into base branch master
+Merged SHA 176572f928fb0136e9a4d2cc0134c71888959e82 with commit message 'adding v2 deps' into base branch master
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-pr-mfb7q-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-build[0m
+cat: /builder/home/basic-auth-user.json: No such file or directory
+cat: /builder/home/basic-auth-pass.json: No such file or directory
+rm -rf kubecon-app/charts
+rm -rf kubecon-app/kubecon-app*.tgz
+rm -rf kubecon-app/requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+helm repo add jenkins-x http://chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+helm dependency build kubecon-app
+Error: no repository definition for http://jenkins-x-chartmuseum:8080, http://jenkins-x-chartmuseum:8080, http://jenkins-x-chartmuseum:8080, http://jenkins-x-chartmuseum:8080, http://jenkins-x-chartmuseum:8080, http://helm.zeebe.io, http://helm.zeebe.io. Please add them via 'helm repo add'
+make: *** [build] Error 1
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-build-build'. The execution of the pipeline has stopped.[0m
