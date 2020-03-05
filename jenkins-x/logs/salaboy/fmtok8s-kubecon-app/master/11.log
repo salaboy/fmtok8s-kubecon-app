@@ -1,0 +1,126 @@
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-4v6kq-11[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-dpbsb[0m
+{"level":"warn","ts":1583404827.1789148,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1583404827.1795173,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-4v6kq-11[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-t7lhn[0m
+{"level":"warn","ts":1583404828.1535776,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1583404828.1894028,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-4v6kq-11[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-4v6kq-11[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-salaboy-fmtok8s-kubecon-app-mas-4v6kq-ps2p4[0m
+{"level":"warn","ts":1583404834.509626,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1583404835.817995,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/*******/fmtok8s-kubecon-app.git @ v0.0.36 in path /workspace/source"}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-4v6kq-11[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:3877f304489b6100a91d18a2bdabb80ee2e87a8d
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-4v6kq-11[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /builder/home/git/credentials
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-4v6kq-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-username[0m
+Command "credential" is deprecated, it will be removed on Jun 1 2020.  This is replaced by Tekton's mounted secrets
+/builder/home/basic-auth-user.json
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-4v6kq-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-password[0m
+Command "credential" is deprecated, it will be removed on Jun 1 2020.  This is replaced by Tekton's mounted secrets
+/builder/home/basic-auth-pass.json
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-4v6kq-11[0m stage [32mfrom-build-pack[0m and container [32mstep-build-release[0m
+rm -rf kubecon-app/charts
+rm -rf kubecon-app/kubecon-app*.tgz
+rm -rf kubecon-app/requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+helm repo add jenkins-x http://chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+helm repo add releases http://jenkins-x-chartmuseum:8080
+"releases" has been added to your repositories
+helm dependency build kubecon-app
+Hang tight while we grab the latest from your chart repositories...
+...Unable to get an update from the "local" chart repository (http://127.0.0.1:8879/charts):
+	Get http://127.0.0.1:8879/charts/index.yaml: dial tcp 127.0.0.1:8879: connect: connection refused
+...Successfully got an update from the "releases" chart repository
+...Successfully got an update from the "jenkins-x" chart repository
+...Successfully got an update from the "stable" chart repository
+Update Complete.
+Saving 4 charts
+Downloading fmtok8s-agenda from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-c4p from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-api-gateway from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-email from repo http://jenkins-x-chartmuseum:8080
+Deleting outdated charts
+helm lint kubecon-app
+==> Linting kubecon-app
+Lint OK
+
+1 chart(s) linted, no failures
+sed -i -e "s/version:.*/version: 0.0.36/" kubecon-app/Chart.yaml
+helm package kubecon-app
+Successfully packaged chart and saved it to: /workspace/source/kubecon-app-0.0.36.tgz
+curl --fail -u *****:********** --data-binary "@kubecon-app-0.0.36.tgz" http://jenkins-x-chartmuseum:8080/api/charts
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  6772  100    14  100  6758    708   333k --:--:-- --:--:-- --:--:--  366k
+{"saved":true}rm -rf kubecon-app*.tgz
+** step changelog  --verbose --version 0.0.36 --rev 3877f304489b6100a91d18a2bdabb80ee2e87a8d
+DEBUG: JX_LOG_LEVEL=error LC_ALL=C git rev-parse --is-shallow-repository
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch --unshallow
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch --tags
+Converted /workspace/source to an unshallow repository
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git for-each-ref --sort=-creatordate --format=%(objectname)%00%(refname:short) --count=2 refs/tags
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git rev-list -n 1 9554f0384a6081a3917df22dd59c1528e22942dc
+DEBUG: Using helmBinary helm with feature flag: template-mode
+Generating change log from git ref e6aa39055a58173240f4727958f1f2ae99fb7885 => 3877f304489b6100a91d18a2bdabb80ee2e87a8d
+DEBUG: Found commits:
+DEBUG:   commit 3877f304489b6100a91d18a2bdabb80ee2e87a8d
+DEBUG:   Author: ******* <Salaboy@gmail.com>
+DEBUG:   Date: Thu Mar  5 10:39:50 2020
+DEBUG:       
+Merge pull request #6 from *******/bump-chart-version-640344dc-5ecd-11ea-869d-527e627df271
+
+chore(deps): bump https://github.com/*******/fmtok8s-c4p to 0.0.23
+
+
+DEBUG:   commit ad17f48318f999fddc7356cd5534f2294bda6461
+DEBUG:   Author: jenkins-x-bot <jenkins-x@googlegroups.com>
+DEBUG:   Date: Thu Mar  5 10:38:02 2020
+DEBUG:       chore(deps): bump https://github.com/*******/fmtok8s-c4p to 0.0.23
+
+Command run was `** step create pr chart --name fmtok8s-api-c4p --version 0.0.23 --repo https://github.com/*******/fmtok8s-kubecon-app.git`
+
+
+
+WARNING: Failed to enrich commit ad17f48318f999fddc7356cd5534f2294bda6461 with issues: users.jenkins.io "x-0" already exists
+WARNING: Failed to enrich commit ad17f48318f999fddc7356cd5534f2294bda6461 with issues: users.jenkins.io "x-0" already exists
+Finding issues in commit messages using git format
+DEBUG: Generated release notes:
+
+## Changes
+
+### Chores
+
+* deps: bump https://github.com/*******/fmtok8s-c4p to 0.0.23
+
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git tag --list 0.0.36
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git tag --list v0.0.36
+WARNING: No release found for *******/fmtok8s-kubecon-app and tag v0.0.36 so creating a new release
+Updated the release information at https://github.com/*******/fmtok8s-kubecon-app/releases/tag/v0.0.36
+Uploaded /workspace/source/dependency-matrix/matrix.yaml to release asset https://github.com/*******/fmtok8s-kubecon-app/releases/download/v0.0.36/dependency-matrix.yaml
+generated: /workspace/source/kubecon-app/templates/release.yaml
+Created Release fmtok8s-kubecon-app-0-0-36 resource in namespace **
+Updating PipelineActivity *******-fmtok8s-kubecon-app-master-11 with version 0.0.36
+Updated PipelineActivities *******-fmtok8s-kubecon-app-master-11 with release notes URL: https://github.com/*******/fmtok8s-kubecon-app/releases/tag/v0.0.36
