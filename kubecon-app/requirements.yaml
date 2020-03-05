@@ -4,10 +4,21 @@ dependencies:
   version: 0.0.12
 - name: fmtok8s-c4p
   repository: http://jenkins-x-chartmuseum:8080
-  version: 0.0.19
+  version: 0.0.25
 - name: fmtok8s-api-gateway
   repository: http://jenkins-x-chartmuseum:8080
   version: 0.0.34
 - name: fmtok8s-email
   repository: http://jenkins-x-chartmuseum:8080
   version: 0.0.8
+- name: fmtok8s-tests
+  repository: http://jenkins-x-chartmuseum:8080
+  version: 0.0.7
+- alias: zeebe
+  name: zeebe-cluster
+  repository: http://helm.zeebe.io
+  version: 0.0.72
+- alias: operate
+  name: zeebe-operate
+  repository: http://helm.zeebe.io
+  version: 0.0.18
