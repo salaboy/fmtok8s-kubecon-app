@@ -1,0 +1,188 @@
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-t59b4-21[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-288g7[0m
+{"level":"warn","ts":1583427097.3056393,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1583427097.3063002,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-t59b4-21[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-bd44d[0m
+{"level":"warn","ts":1583427098.2145822,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1583427098.2168136,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-t59b4-21[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-t59b4-21[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-salaboy-fmtok8s-kubecon-app-mas-t59b4-wcqqg[0m
+{"level":"warn","ts":1583427103.3155417,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1583427104.527265,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/*******/fmtok8s-kubecon-app.git @ v0.0.46 in path /workspace/source"}
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-t59b4-21[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:236cf3592eadb174fa462fda62cb26392250eff5
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-t59b4-21[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /builder/home/git/credentials
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-t59b4-21[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-username[0m
+Command "credential" is deprecated, it will be removed on Jun 1 2020.  This is replaced by Tekton's mounted secrets
+/builder/home/basic-auth-user.json
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-t59b4-21[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-password[0m
+Command "credential" is deprecated, it will be removed on Jun 1 2020.  This is replaced by Tekton's mounted secrets
+/builder/home/basic-auth-pass.json
+
+Showing logs for build [32msalaboy-fmtok8s-kubecon-app-mas-t59b4-21[0m stage [32mfrom-build-pack[0m and container [32mstep-build-release[0m
+rm -rf kubecon-app/charts
+rm -rf kubecon-app/kubecon-app*.tgz
+rm -rf kubecon-app/requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+helm repo add jenkins-x http://chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+helm repo add zeebe http://helm.zeebe.io
+"zeebe" has been added to your repositories
+helm repo add releases http://jenkins-x-chartmuseum:8080
+"releases" has been added to your repositories
+helm dependency build kubecon-app
+Hang tight while we grab the latest from your chart repositories...
+...Unable to get an update from the "local" chart repository (http://127.0.0.1:8879/charts):
+	Get http://127.0.0.1:8879/charts/index.yaml: dial tcp 127.0.0.1:8879: connect: connection refused
+...Successfully got an update from the "releases" chart repository
+...Successfully got an update from the "zeebe" chart repository
+...Successfully got an update from the "jenkins-x" chart repository
+...Successfully got an update from the "stable" chart repository
+Update Complete.
+Saving 7 charts
+Downloading fmtok8s-agenda from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-c4p from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-api-gateway from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-email from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-tests from repo http://jenkins-x-chartmuseum:8080
+Downloading zeebe-cluster from repo http://helm.zeebe.io
+Downloading zeebe-operate from repo http://helm.zeebe.io
+Deleting outdated charts
+helm lint kubecon-app
+==> Linting kubecon-app
+Lint OK
+
+1 chart(s) linted, no failures
+sed -i -e "s/version:.*/version: 0.0.46/" kubecon-app/Chart.yaml
+helm package kubecon-app
+Successfully packaged chart and saved it to: /workspace/source/kubecon-app-0.0.46.tgz
+curl --fail -u *****:********** --data-binary "@kubecon-app-0.0.46.tgz" http://jenkins-x-chartmuseum:8080/api/charts
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  287k  100    14  100  287k    142  2919k --:--:-- --:--:-- --:--:-- 2933k
+{"saved":true}rm -rf kubecon-app*.tgz
+** step changelog  --verbose --version 0.0.46 --rev 236cf3592eadb174fa462fda62cb26392250eff5
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git rev-parse --is-shallow-repository
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch --unshallow
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch --tags
+Converted /workspace/source to an unshallow repository
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git for-each-ref --sort=-creatordate --format=%(objectname)%00%(refname:short) --count=2 refs/tags
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git rev-list -n 1 ca54629bf1cc3a501c523826458323cf90a2b863
+DEBUG: Using helmBinary helm with feature flag: template-mode
+Generating change log from git ref b39f25ccb6bdc81908c52c4db361d5e63f13f8e0 => 236cf3592eadb174fa462fda62cb26392250eff5
+DEBUG: Found commits:
+DEBUG:   commit 236cf3592eadb174fa462fda62cb26392250eff5
+DEBUG:   Author: ******* <Salaboy@gmail.com>
+DEBUG:   Date: Thu Mar  5 16:51:02 2020
+DEBUG:       
+Merge pull request #10 from *******/v2
+
+adding v2 deps
+
+
+DEBUG:   commit 56133a9f0b7be283119559864c0cd4c2a24024d7
+DEBUG:   Author: ******* <*******@gmail.com>
+DEBUG:   Date: Thu Mar  5 16:45:27 2020
+DEBUG:       adding
+
+
+
+DEBUG:   commit ed1d4ba5d93d3321055a78cf09d5ff2f2129939b
+DEBUG:   Author: ******* <*******@gmail.com>
+DEBUG:   Date: Thu Mar  5 16:45:27 2020
+DEBUG:       adding separator
+
+
+
+DEBUG:   commit 08e5f96dfac3860b10b863d02e6ecc2e35d45327
+DEBUG:   Author: ******* <*******@gmail.com>
+DEBUG:   Date: Thu Mar  5 16:45:27 2020
+DEBUG:       formatting
+
+
+
+DEBUG:   commit fe2200639f7e64ec420a0c61796e6e0c1e3d4912
+DEBUG:   Author: ******* <*******@gmail.com>
+DEBUG:   Date: Thu Mar  5 16:45:27 2020
+DEBUG:       updating makefile
+
+
+
+DEBUG:   commit 3a9c673f0a5238d215f5c47fbf550ffd8076c45d
+DEBUG:   Author: ******* <*******@gmail.com>
+DEBUG:   Date: Thu Mar  5 16:45:27 2020
+DEBUG:       adding repo update
+
+
+
+DEBUG:   commit 3b83cc00ce4de15bcc6a1481c6fd2d39d631e4d6
+DEBUG:   Author: ******* <*******@gmail.com>
+DEBUG:   Date: Thu Mar  5 15:54:08 2020
+DEBUG:       updating make
+
+
+
+DEBUG:   commit 176572f928fb0136e9a4d2cc0134c71888959e82
+DEBUG:   Author: ******* <*******@gmail.com>
+DEBUG:   Date: Thu Mar  5 15:49:21 2020
+DEBUG:       adding v2 deps
+
+
+
+WARNING: Failed to enrich commit 56133a9f0b7be283119559864c0cd4c2a24024d7 with issues: selected more than one user from users.jenkins.io: [******* x-0]
+WARNING: Failed to enrich commit 56133a9f0b7be283119559864c0cd4c2a24024d7 with issues: selected more than one user from users.jenkins.io: [******* x-0]
+Finding issues in commit messages using git format
+WARNING: Failed to enrich commit ed1d4ba5d93d3321055a78cf09d5ff2f2129939b with issues: selected more than one user from users.jenkins.io: [******* x-0]
+WARNING: Failed to enrich commit ed1d4ba5d93d3321055a78cf09d5ff2f2129939b with issues: selected more than one user from users.jenkins.io: [******* x-0]
+WARNING: Failed to enrich commit 08e5f96dfac3860b10b863d02e6ecc2e35d45327 with issues: selected more than one user from users.jenkins.io: [******* x-0]
+WARNING: Failed to enrich commit 08e5f96dfac3860b10b863d02e6ecc2e35d45327 with issues: selected more than one user from users.jenkins.io: [******* x-0]
+WARNING: Failed to enrich commit fe2200639f7e64ec420a0c61796e6e0c1e3d4912 with issues: selected more than one user from users.jenkins.io: [******* x-0]
+WARNING: Failed to enrich commit fe2200639f7e64ec420a0c61796e6e0c1e3d4912 with issues: selected more than one user from users.jenkins.io: [******* x-0]
+WARNING: Failed to enrich commit 3a9c673f0a5238d215f5c47fbf550ffd8076c45d with issues: selected more than one user from users.jenkins.io: [******* x-0]
+WARNING: Failed to enrich commit 3a9c673f0a5238d215f5c47fbf550ffd8076c45d with issues: selected more than one user from users.jenkins.io: [******* x-0]
+WARNING: Failed to enrich commit 3b83cc00ce4de15bcc6a1481c6fd2d39d631e4d6 with issues: selected more than one user from users.jenkins.io: [******* x-0]
+WARNING: Failed to enrich commit 3b83cc00ce4de15bcc6a1481c6fd2d39d631e4d6 with issues: selected more than one user from users.jenkins.io: [******* x-0]
+WARNING: Failed to enrich commit 176572f928fb0136e9a4d2cc0134c71888959e82 with issues: selected more than one user from users.jenkins.io: [******* x-0]
+WARNING: Failed to enrich commit 176572f928fb0136e9a4d2cc0134c71888959e82 with issues: selected more than one user from users.jenkins.io: [******* x-0]
+DEBUG: Generated release notes:
+
+## Changes
+
+* adding
+* adding separator
+* formatting
+* updating makefile
+* adding repo update
+* updating make
+* adding v2 deps
+
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git tag --list 0.0.46
+DEBUG: JX_LOG_LEVEL=error LC_ALL=C git tag --list v0.0.46
+WARNING: No release found for *******/fmtok8s-kubecon-app and tag v0.0.46 so creating a new release
+Updated the release information at https://github.com/*******/fmtok8s-kubecon-app/releases/tag/v0.0.46
+Uploaded /workspace/source/dependency-matrix/matrix.yaml to release asset https://github.com/*******/fmtok8s-kubecon-app/releases/download/v0.0.46/dependency-matrix.yaml
+generated: /workspace/source/kubecon-app/templates/release.yaml
+Created Release fmtok8s-kubecon-app-0-0-46 resource in namespace **
+Updating PipelineActivity *******-fmtok8s-kubecon-app-master-21 with version 0.0.46
+Updated PipelineActivities *******-fmtok8s-kubecon-app-master-21 with release notes URL: https://github.com/*******/fmtok8s-kubecon-app/releases/tag/v0.0.46
