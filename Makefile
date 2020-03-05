@@ -10,6 +10,7 @@ init:
 
 setup: init
 	helm repo add jenkins-x http://chartmuseum.jenkins-x.io
+        helm repo add zeebe http://helm.zeebe.io
 	helm repo add releases ${CHART_REPO}
 
 build: clean setup
