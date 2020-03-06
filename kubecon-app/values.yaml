@@ -4,3 +4,13 @@
 
 global:
   zeebe: zeebe
+
+fmtok8s-c4p: 
+    env:
+        ZEEBE_CLIENT_BROKER_CONTACT_POINT : zeebe:26500
+fmtok8s-agenda: 
+    env:
+        ZEEBE_CLIENT_BROKER_CONTACT_POINT : zeebe:26500 
+fmtok8s-email: 
+    env:
+        ZEEBE_CLIENT_BROKER_CONTACT_POINT : zeebe:26500                
