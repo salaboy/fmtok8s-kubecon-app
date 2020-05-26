@@ -10,7 +10,7 @@ dependencies:
   version: 0.0.41
 - name: fmtok8s-email
   repository: http://jenkins-x-chartmuseum:8080
-  version: 0.0.13
+  version: 0.0.15
 - name: fmtok8s-tests
   repository: http://jenkins-x-chartmuseum:8080
   version: 0.0.7
