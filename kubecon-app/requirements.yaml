@@ -7,7 +7,7 @@ dependencies:
   version: 0.0.49
 - name: fmtok8s-api-gateway
   repository: http://jenkins-x-chartmuseum:8080
-  version: 0.0.83
+  version: 0.0.84
 - name: fmtok8s-email
   repository: http://jenkins-x-chartmuseum:8080
   version: 0.0.28
